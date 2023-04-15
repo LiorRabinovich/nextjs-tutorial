@@ -8,6 +8,13 @@ interface PostView {
     }
 }
 
+export function generateMetadata(props: PostView) {
+    return {
+        title: `Post ${props.params.postId}`,
+        description: `Post description ${props.params.postId}`
+    }
+}
+
 export default function PostViewPage(props: PostView) {
     const { postId } = props.params;
     return (

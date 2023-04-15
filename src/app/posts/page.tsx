@@ -5,6 +5,11 @@ import PostCard from '@/components/PostCard';
 
 const POSTS = Array.from({length: 30});
 
+export const metadata = {
+    title: 'Posts | Next.js Tutorial',
+    description: 'Posts Description | Next.js Tutorial'
+}
+
 export default function PostsPage() {
     return (
         <>

@@ -1,5 +1,10 @@
 // domain.co.il/about
 
+export const metadata = {
+    title: 'About | Next.js Tutorial',
+    description: 'About description | Next.js Tutorial',
+}
+
 export default function AboutPage() {
     return (
         <>

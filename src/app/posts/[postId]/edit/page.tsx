@@ -1,6 +1,11 @@
 // domain.co.il/posts/:postId/edit
 import PostForm from '@/components/PostForm';
 
+export const metadata = {
+    title: 'Edit Post | Next.js Tutorial',
+    description: 'Edit Post Description | Next.js Tutorial'
+}
+
 interface PostEdit {
     params: {
         postId: string,
