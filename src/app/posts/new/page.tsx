@@ -4,8 +4,8 @@ import PostForm from '@/components/PostForm';
 export default function NewPostPage() {
     return (
         <>
-            <header>
-                <h1>NewPost Page</h1>
+            <header className="mb-4">
+                <h1>New Post</h1>
             </header>
 
             <PostForm />

@@ -1,4 +1,5 @@
 import '@/app/globals.css';
+import AppHeader from '@/components/AppHeader';
 
 export const metadata = {
   title: 'Next.js',
@@ -12,7 +13,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppHeader />
+        <main className="max-w-5xl mx-auto py-6 px-5">
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
