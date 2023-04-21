@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
+import { firestore } from '@/firebase'
 import Post from '@/types/Post';
 
 // GET /api/posts
 export async function GET() {
-    const posts: Post[] = Array.from({ length: 30 }).map((_, index) => {
+    const snapshot: FirebaseFirestore.QuerySnapshot = await firestore.collection('posts').get();
+    const posts = snapshot.docs.map((doc) => {
+        const { title, body } = doc.data();
         return {
-            id: (index + 1).toString(),
-            title: `Post ${index}`,
-            body: `Post ${index}`,
+            id: doc.id,
+            title,
+            body
         }
-    });
+    })
     return NextResponse.json({ posts })
 }
 
