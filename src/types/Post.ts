@@ -1,8 +1,8 @@
 export default interface Post {
-    id: number;
+    id?: string;
     title: string;
     body: string;
-    userId: number;
-    tags: string[];
-    reactions: number
+    userId?: number;
+    tags?: string[];
+    reactions?: number
 }
