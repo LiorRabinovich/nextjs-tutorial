@@ -1,7 +1,6 @@
 // domain.co.il/posts/:postId
-
-import Link from "next/link"
 import { getPost } from '@/services/posts';
+import PostActions from '@/components/PostActions';
 
 interface PostView {
     params: {
@@ -24,10 +23,7 @@ export default async function PostViewPage(props: PostView) {
         <>
             <header className="flex items-center mb-6">
                 <h1>{title}</h1>
-                <div className="ml-auto flex gap-4">
-                    <Link className="btn" href={`/posts/${postId}/edit`}>Edit</Link>
-                    <button className="btn--red">Delete</button>
-                </div>
+                <PostActions postId={postId} />
             </header>
             <p>{body}</p>
         </>
