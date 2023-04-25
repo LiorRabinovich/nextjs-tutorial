@@ -1,6 +1,6 @@
 // domain.co.il/posts/:postId/edit
 import PostForm from '@/components/PostForm';
-import { getPost } from '@/services/posts'
+import { getPost } from '@/services/posts.server'
 
 export const metadata = {
     title: 'Edit Post | Next.js Tutorial',

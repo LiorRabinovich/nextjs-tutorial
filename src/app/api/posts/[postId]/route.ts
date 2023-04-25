@@ -1,23 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { firestore } from '@/firebase'
 import Post from '@/types/Post';
-import { isPostValid } from '@/services/posts';
-
-// GET /api/posts/:postId
-export async function GET(request: NextRequest, context: { params: { postId: string } }) {
-    const document: FirebaseFirestore.DocumentSnapshot = await firestore.collection('posts').doc(context.params.postId).get();
-    const data = document.data();
-
-    if (!(document.exists && data)) {
-        return new NextResponse('Bad request', { status: 400 });
-    }
-
-    return NextResponse.json({
-        id: document.id,
-        title: data.title,
-        body: data.body,
-    })
-}
+import { isPostValid } from '@/services/posts.server';
 
 // PUT /api/posts/:postId
 export async function PUT(request: NextRequest, context: { params: { postId: string } }) {

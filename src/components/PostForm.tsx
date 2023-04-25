@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import { savePost } from '@/services/posts';
+import { savePost } from '@/services/posts.client';
 import { useRouter } from 'next/navigation';
 
 interface PostFormProps {

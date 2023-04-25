@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import { deletePost } from '@/services/posts';
+import { deletePost } from '@/services/posts.client';
 import {useRouter} from 'next/navigation';
 
 interface PostActionsProps {
