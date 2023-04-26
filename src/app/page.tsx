@@ -5,6 +5,8 @@ export const metadata = {
     description: 'Home description | Next.js Tutorial',
 }
 
+export const dynamic = 'force-static';
+
 export default function HomePage() {
     return (
         <>

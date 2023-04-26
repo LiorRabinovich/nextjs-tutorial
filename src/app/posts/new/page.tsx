@@ -6,6 +6,8 @@ export const metadata = {
     description: 'New Post Description | Next.js Tutorial'
 }
 
+export const dynamic = 'force-static';
+
 export default function NewPostPage() {
     return (
         <>

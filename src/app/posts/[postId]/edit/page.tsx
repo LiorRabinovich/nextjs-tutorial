@@ -7,6 +7,8 @@ export const metadata = {
     description: 'Edit Post Description | Next.js Tutorial'
 }
 
+export const dynamic = 'force-static';
+
 interface PostEdit {
     params: {
         postId: string,

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { firestore } from '@/firebase'
 import Post from '@/types/Post';
 import { isPostValid } from '@/services/posts.server';
+import revalidate from '@/services/revalidate';
 
 // PUT /api/posts/:postId
 export async function PUT(request: NextRequest, context: { params: { postId: string } }) {
@@ -17,7 +18,7 @@ export async function PUT(request: NextRequest, context: { params: { postId: str
             title: post.title,
             body: post.body,
         })
-
+        await revalidate(['/posts', `/posts/${postId}`]);
         console.log('Post edited successfully')
         return NextResponse.json({ message: 'Post edited successfully' })
     } catch (error) {
@@ -36,6 +37,7 @@ export async function DELETE(request: NextRequest, context: { params: { postId: 
 
     try {
         await firestore.collection('posts').doc(postId).delete();
+        await revalidate(['/posts', `/posts/${postId}`]);
         console.log('Post deleted successfully');
         return NextResponse.json({ message: 'Post deleted successfully' })
     } catch (error) {

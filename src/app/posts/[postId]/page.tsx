@@ -9,7 +9,6 @@ interface PostView {
 }
 
 export const dynamic = 'force-static';
-export const revalidate = 3;
 
 export function generateMetadata(props: PostView) {
     return {

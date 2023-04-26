@@ -5,7 +5,7 @@ import PostCard from '@/components/PostCard';
 import Post from '@/types/Post'
 import { getPosts } from '@/services/posts.server';
 
-export const revalidate = 3;
+export const dynamic = 'force-static';
 
 export const metadata = {
     title: 'Posts | Next.js Tutorial',

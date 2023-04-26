@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { firestore } from '@/firebase'
 import Post from '@/types/Post';
 import { isPostValid } from '@/services/posts.server';
+import revalidate from '@/services/revalidate';
 
 // POST /api/posts
 export async function POST(request: NextRequest) {
@@ -15,6 +16,7 @@ export async function POST(request: NextRequest) {
         await firestore.collection('posts').doc().set({
             ...post,
         })
+        await revalidate(['/posts']);
         console.log('Post added successfully');
         return NextResponse.json({ message: 'Post added successfully' })
     } catch (error) {
