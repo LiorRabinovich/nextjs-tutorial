@@ -1,4 +1,5 @@
 import Link from "next/link"
+import AppHeaderUser from '@/components/AppHeaderUser';
 
 const MENU_ITEMS = [
     { title: 'Home', path: '/' },
@@ -18,6 +19,7 @@ export default function AppHeader() {
                             </li>
                         ))}
                     </ul>
+                    <AppHeaderUser />
                 </div>
             </nav>
         </header>
