@@ -13,6 +13,7 @@ export async function savePost(post: Post) {
 
         if (!response.ok) {
             alert('Network response was not ok');
+            return;
         }
 
         return response.json();
@@ -30,6 +31,7 @@ export async function deletePost(postId: string) {
 
         if (!response.ok) {
             alert('Network response was not ok');
+            return;
         }
 
         return response.json();

@@ -1,8 +1,13 @@
+import admin from 'firebase-admin';
+
 export default interface Post {
     id?: string;
     title: string;
     body: string;
-    userId?: number;
-    tags?: string[];
-    reactions?: number
+    updatedBy?: {
+        name?: string | null;
+        email?: string | null;
+        image?: string | null;
+    },
+    updatedAt?: admin.firestore.Timestamp;
 }

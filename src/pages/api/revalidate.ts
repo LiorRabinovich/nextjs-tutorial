@@ -3,6 +3,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+    if (process.env.NODE_ENV !== 'production') {
+        return response.json({ message: 'Revalidated successfully' })
+    }
+    
     if (request.method === 'POST') {
         const { secret, paths } = request.body;
 

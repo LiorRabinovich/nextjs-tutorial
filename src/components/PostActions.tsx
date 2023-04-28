@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { deletePost } from '@/services/posts.client';
 import {useRouter} from 'next/navigation';
+import RestrictedContent from '@/components/RestrictedContent';
 
 interface PostActionsProps {
     postId: string,
@@ -17,9 +18,11 @@ export default function PostActions({ postId }: PostActionsProps) {
     }
 
     return (
-        <div className="ml-auto flex gap-4">
-            <Link className="btn" href={`/posts/${postId}/edit`}>Edit</Link>
-            <button onClick={onDelete} className="btn--red">Delete</button>
-        </div>
+        <RestrictedContent>
+            <div className="ml-auto flex gap-4">
+                <Link className="btn" href={`/posts/${postId}/edit`}>Edit</Link>
+                <button onClick={onDelete} className="btn--red">Delete</button>
+            </div>
+        </RestrictedContent>
     )
 }
