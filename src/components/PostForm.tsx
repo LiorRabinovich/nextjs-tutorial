@@ -17,9 +17,13 @@ export default function PostForm(props: PostFormProps) {
 
     async function onSubmit(e: React.FormEvent) {
         e.preventDefault();
-        await savePost({ id: props.postId, title, body });
-        alert('Post saved successfully');
-        push('/posts');
+        try {
+            await savePost({ id: props.postId, title, body });
+            alert('Post saved successfully');
+            push('/posts');
+        } catch(error) {
+            console.error(error);
+        }
     }
 
     return (

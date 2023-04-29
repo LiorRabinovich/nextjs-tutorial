@@ -3,7 +3,7 @@ import Post from "@/types/Post";
 export async function savePost(post: Post) {
     try {
         const method = post?.id ? 'PUT' : 'POST';
-        const response = await fetch(`http://localhost:3000/api/posts/${post?.id || ''}`, {
+        const response = await fetch(`/api/posts/${post?.id || ''}`, {
             method,
             headers: {
                 'Context-Type': 'application/json',

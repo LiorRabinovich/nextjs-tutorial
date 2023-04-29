@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
             updatedBy: session?.user,
             updatedAt: admin.firestore.Timestamp.now()
         })
-        await revalidate(['/posts']);
+        await revalidate(request, ['/posts']);
         console.log('Post added successfully');
         return NextResponse.json({ message: 'Post added successfully' })
     } catch (error) {

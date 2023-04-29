@@ -24,7 +24,7 @@ export async function PUT(request: NextRequest, context: { params: { postId: str
             updatedBy: session?.user,
             updatedAt: admin.firestore.Timestamp.now()
         })
-        await revalidate(['/posts', `/posts/${postId}`]);
+        await revalidate(request, ['/posts', `/posts/${postId}`]);
         console.log('Post edited successfully')
         return NextResponse.json({ message: 'Post edited successfully' })
     } catch (error) {
@@ -43,7 +43,7 @@ export async function DELETE(request: NextRequest, context: { params: { postId: 
 
     try {
         await firestore.collection('posts').doc(postId).delete();
-        await revalidate(['/posts', `/posts/${postId}`]);
+        await revalidate(request, ['/posts', `/posts/${postId}`]);
         console.log('Post deleted successfully');
         return NextResponse.json({ message: 'Post deleted successfully' })
     } catch (error) {
