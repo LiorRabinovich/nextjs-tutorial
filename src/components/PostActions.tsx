@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link"
 import { deletePost } from '@/services/posts.client';
-import {useRouter} from 'next/navigation';
 import RestrictedContent from '@/components/RestrictedContent';
 
 interface PostActionsProps {
@@ -9,13 +8,11 @@ interface PostActionsProps {
 }
 
 export default function PostActions({ postId }: PostActionsProps) {
-    const {push} = useRouter();
-
     async function onDelete() {
         try {
             await deletePost(postId);
             alert('Post deleted successfully');
-            push('/posts');
+            window.location.href = "/posts";
         } catch(error) {
             console.error(error);
             alert(error);
