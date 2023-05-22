@@ -10,22 +10,24 @@ interface PostView {
 
 export const dynamic = 'force-static';
 
-export function generateMetadata(props: PostView) {
+export async function generateMetadata(props: PostView) {
+    const { postId } = props.params;
+    const { title, body } = await getPost(postId);
+
     return {
-        title: `Post ${props.params.postId}`,
-        description: `Post description ${props.params.postId}`
+        title: `${title} | Next.js Tutorial`,
+        description: body.slice(0, 100)
     }
 }
 
 export default async function PostViewPage(props: PostView) {
     const { postId } = props.params;
     const { title, body, updatedBy, updatedAt } = await getPost(postId);
-    const updatedAtString = updatedAt.toDate().toLocaleString('en-GB')
+    const updatedAtString = updatedAt?.toDate().toLocaleString('en-GB') || '';
 
     return (
         <>
             <header className="flex items-center mb-6">
-                
                 <div>
                     <h1>{title}</h1>
                     <div className="text-sm">{updatedBy?.name} {updatedAtString}</div>

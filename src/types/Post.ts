@@ -10,4 +10,6 @@ export default interface Post {
         image?: string | null;
     },
     updatedAt?: admin.firestore.Timestamp;
+    updateCount?: number;
+    deletedAt?: admin.firestore.Timestamp;
 }

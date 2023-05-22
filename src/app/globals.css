@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+  @apply block font-bold text-xl;
+}
+
 .post-form__block {
   @apply mb-4;
 }

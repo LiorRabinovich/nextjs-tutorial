@@ -2,11 +2,6 @@
 import PostForm from '@/components/PostForm';
 import { getPost } from '@/services/posts.server'
 
-export const metadata = {
-    title: 'Edit Post | Next.js Tutorial',
-    description: 'Edit Post Description | Next.js Tutorial'
-}
-
 export const dynamic = 'force-static';
 
 interface PostEdit {
@@ -15,16 +10,26 @@ interface PostEdit {
     }
 }
 
+export async function generateMetadata(props: PostEdit) {
+    const { postId } = props.params;
+    const { title, body } = await getPost(postId);
+
+    return {
+        title: `Edit "${title}" | Next.js Tutorial`,
+        description: body.slice(0, 100)
+    }
+}
+
 export default async function PostEditPage(props: PostEdit) {
     const { postId } = props.params;
-    const post = await getPost(postId);
+    const { title, body } = await getPost(postId);
     return (
         <>
             <header>
-                <h1>PostEdit {postId} Page</h1>
+                <h1>Edit "{title}"</h1>
             </header>
 
-            <PostForm postId={postId} title={post.title} body={post.body} />
+            <PostForm postId={postId} title={title} body={body} />
         </>
     )
 }

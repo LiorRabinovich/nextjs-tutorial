@@ -23,6 +23,7 @@ export default function PostForm(props: PostFormProps) {
             push('/posts');
         } catch(error) {
             console.error(error);
+            alert(error);
         }
     }
 

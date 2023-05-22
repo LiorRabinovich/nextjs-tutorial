@@ -6,6 +6,11 @@ interface SignInLayoutProps {
     children: React.ReactNode
 }
 
+export const metadata = {
+    title: 'Sign In | Next.js Tutorial',
+    description: 'Sign In Description | Next.js Tutorial'
+}
+
 export default async function SignInLayout({ children }: SignInLayoutProps) {
     const session = await getServerSession(authOptions);
 

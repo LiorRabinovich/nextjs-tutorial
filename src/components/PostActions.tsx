@@ -12,9 +12,14 @@ export default function PostActions({ postId }: PostActionsProps) {
     const {push} = useRouter();
 
     async function onDelete() {
-        await deletePost(postId);
-        alert('Post deleted successfully');
-        push('/posts');
+        try {
+            await deletePost(postId);
+            alert('Post deleted successfully');
+            push('/posts');
+        } catch(error) {
+            console.error(error);
+            alert(error);
+        }
     }
 
     return (
